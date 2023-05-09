@@ -1,9 +1,11 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import Cart from './Components/Cart/Cart';
 import Footer from './Components/Layout/Footer';
 import Heading from './Components/Layout/Heading';
 import MusicContent from './Components/Layout/MusicContent';
 import Navbar from './Components/Layout/Navbar';
+// import CartContext from './Components/Store/CartContext';
+import CartProvider from './Components/Store/CartProvider';
 
 
 function App() {
@@ -16,13 +18,13 @@ function App() {
     }
   }
   return (
-    <Fragment>
+    <CartProvider>
       {showCart && <Cart handleToggleCart={handleToggleCart}/>}
       <Navbar handleToggleCart={handleToggleCart}/>
       <Heading/>
-      <MusicContent/>
+      <MusicContent handleToggleCart={handleToggleCart}/>
       <Footer/>
-    </Fragment>
+    </CartProvider>
   );
 }
 

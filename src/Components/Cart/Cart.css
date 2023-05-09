@@ -1,20 +1,21 @@
-.cart-item img{
+.col img{
   width: 100px;
   height: 100px;
 }
 
-.cart-item span {
+.col  span {
   font-weight: bold;
 }
 
-.cart-item input{
+.col input{
   height: 35px;
   width: 50px;
+  border-color: cyan;
 }
 
-.cart-item button{
-  width: 100px;
-  margin-left: 20px;
+.col button{
+  width: 80px;
+  margin-left: 10px;
 }
 
 .total{

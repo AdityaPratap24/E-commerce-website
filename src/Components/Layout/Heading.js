@@ -4,7 +4,7 @@ import './Heading.css'
 const Heading = () => {
   return (
     <div className='heading'>
-      <h1>The generics</h1>
+      <h1>The Generics</h1>
     </div>
   )
 }
