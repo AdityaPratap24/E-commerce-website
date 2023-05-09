@@ -1,36 +1,72 @@
-import "./App.css";
-import ExpenseForm from "./Components/Expenses/ExpenseForm";
-import ExpenseItems from "./Components/Expenses/ExpenseItems";
-const App=()=> {
-  const expenses = [
+import { useState } from 'react';
+import Cart from './Components/Cart/Cart';
+import Footer from './Components/Layout/Footer';
+import Heading from './Components/Layout/Heading';
+import MusicContent from './Components/Layout/MusicContent';
+import Navbar from './Components/Layout/Navbar';
+import CartProvider from './Components/Store/CartProvider';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom";
+import About from './Components/Pages/About';
+import Home from './Components/Pages/Home';
+import HeaderContent from './Components/Layout/HeaderContent';
+
+
+
+function App() {
+  const [showCart, setShowCart] = useState(false);
+  const handleToggleCart = () => {
+    if (showCart) {
+      setShowCart(false);
+    } else {
+      setShowCart(true);
+    }
+  }
+  const router = createBrowserRouter([
     {
-      id: 'e1',
-      title: 'Toilet Paper',
-      amount: 94.12,
-      date: new Date(2020, 7, 14),
-    },
-    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
-    {
-      id: 'e3',
-      title: 'Car Insurance',
-      amount: 294.67,
-      date: new Date(2021, 2, 28),
+      path: "/",
+      element: (<>
+        <Navbar handleToggleCart={handleToggleCart} />
+        <HeaderContent />
+        <Home />
+        <Footer />
+      </>),
     },
     {
-      id: 'e4',
-      title: 'New Desk (Wooden)',
-      amount: 450,
-      date: new Date(2021, 5, 12),
+      path: "/home",
+      element: (<>
+        <Navbar handleToggleCart={handleToggleCart} />
+        <HeaderContent />
+        <Home />
+        <Footer />
+      </>),
     },
-  ];
+    {
+      path: "/store",
+      element: (<>
+        <Navbar handleToggleCart={handleToggleCart} />
+        <Heading />
+        <MusicContent handleToggleCart={handleToggleCart} />
+        <Footer />
+      </>),
+    },
+    {
+      path: "/about",
+      element: <>
+        <Navbar handleToggleCart={handleToggleCart} />
+        <Heading />
+        <About />
+        <Footer />
+      </>,
+    },
+  ]);
   return (
-    <div style={{backgroundColor:"gray"}}>
-      <h1>Lets get started!!</h1>
-     <ExpenseForm/>
-      {expenses.map((ele)=>{
-        return <ExpenseItems key={ele.id} exptitle={ele.title} expamount={ele.amount} expdate={ele.date}/>
-      })}
-    </div>
+    <CartProvider>
+      {showCart && <Cart handleToggleCart={handleToggleCart} />}
+      <RouterProvider router={router} />
+    </CartProvider>
   );
 }
 
