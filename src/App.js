@@ -4,26 +4,43 @@ import Footer from './Components/Layout/Footer';
 import Heading from './Components/Layout/Heading';
 import MusicContent from './Components/Layout/MusicContent';
 import Navbar from './Components/Layout/Navbar';
-// import CartContext from './Components/Store/CartContext';
 import CartProvider from './Components/Store/CartProvider';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom";
+import About from './Components/Pages/About';
+
 
 
 function App() {
-  const [showCart,setShowCart]=useState(false);
-  const handleToggleCart=()=>{
-    if(showCart){
+  const [showCart, setShowCart] = useState(false);
+  const handleToggleCart = () => {
+    if (showCart) {
       setShowCart(false);
-    }else{
+    } else {
       setShowCart(true);
     }
   }
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (<>
+        <Navbar handleToggleCart={handleToggleCart} />
+        <Heading />
+        <MusicContent handleToggleCart={handleToggleCart} />
+        <Footer />
+      </>),
+    },
+    {
+      path: "/about",
+      element: <><Navbar handleToggleCart={handleToggleCart} /> <Heading /><About/><Footer /></>,
+    },
+  ]);
   return (
     <CartProvider>
-      {showCart && <Cart handleToggleCart={handleToggleCart}/>}
-      <Navbar handleToggleCart={handleToggleCart}/>
-      <Heading/>
-      <MusicContent handleToggleCart={handleToggleCart}/>
-      <Footer/>
+      {showCart && <Cart handleToggleCart={handleToggleCart} />}
+      <RouterProvider router={router} />
     </CartProvider>
   );
 }
