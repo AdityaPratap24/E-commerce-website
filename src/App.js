@@ -5,13 +5,11 @@ import Heading from './Components/Layout/Heading';
 import MusicContent from './Components/Layout/MusicContent';
 import Navbar from './Components/Layout/Navbar';
 import CartProvider from './Components/Store/CartProvider';
-import {
-  createBrowserRouter,
-  RouterProvider
-} from "react-router-dom";
 import About from './Components/Pages/About';
 import Home from './Components/Pages/Home';
 import HeaderContent from './Components/Layout/HeaderContent';
+import Contact from './Components/Pages/Contact';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 
@@ -24,49 +22,29 @@ function App() {
       setShowCart(true);
     }
   }
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (<>
-        <Navbar handleToggleCart={handleToggleCart} />
-        <HeaderContent />
-        <Home />
-        <Footer />
-      </>),
-    },
-    {
-      path: "/home",
-      element: (<>
-        <Navbar handleToggleCart={handleToggleCart} />
-        <HeaderContent />
-        <Home />
-        <Footer />
-      </>),
-    },
-    {
-      path: "/store",
-      element: (<>
-        <Navbar handleToggleCart={handleToggleCart} />
-        <Heading />
-        <MusicContent handleToggleCart={handleToggleCart} />
-        <Footer />
-      </>),
-    },
-    {
-      path: "/about",
-      element: <>
-        <Navbar handleToggleCart={handleToggleCart} />
-        <Heading />
-        <About />
-        <Footer />
-      </>,
-    },
-  ]);
   return (
+    <BrowserRouter>
     <CartProvider>
       {showCart && <Cart handleToggleCart={handleToggleCart} />}
-      <RouterProvider router={router} />
+      <Navbar handleToggleCart={handleToggleCart} />
+      <Route exact path='/'>
+        <HeaderContent />
+        <Home />
+      </Route>
+      <Route exact path='/about'>
+        <Heading />
+        <About />
+      </Route>
+      <Route exact path='/store'>
+        <Heading />
+        <MusicContent handleToggleCart={handleToggleCart} />
+      </Route>
+      <Route exact path='/contact'>
+        <Contact />
+      </Route>
+      <Footer />
     </CartProvider>
+    </BrowserRouter>
   );
 }
 

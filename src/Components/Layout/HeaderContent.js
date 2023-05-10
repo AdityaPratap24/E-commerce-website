@@ -5,8 +5,8 @@ const HeaderContent = () => {
     <>
     <div className='heading-content'>
       <h1>The Generics</h1>
-      <button class="latest-album">Get our Latest Album</button>
-      <button class="play-btn">►</button>
+      <button className="latest-album">Get our Latest Album</button>
+      <button className="play-btn">►</button>
     </div>
     </>
   )
