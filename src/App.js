@@ -10,7 +10,8 @@ import Home from './Components/Pages/Home';
 import HeaderContent from './Components/Layout/HeaderContent';
 import Contact from './Components/Pages/Contact';
 import { BrowserRouter, Route } from 'react-router-dom';
-
+import Product from './Components/Pages/Product';
+import ProductDetail from './Components/Pages/ProductDetail';
 
 
 function App() {
@@ -41,6 +42,12 @@ function App() {
       </Route>
       <Route exact path='/contact'>
         <Contact />
+      </Route>
+      <Route exact path='/products'>
+        <Product />
+      </Route>
+      <Route exact path='/products/:productId'>
+        <ProductDetail/>
       </Route>
       <Footer />
     </CartProvider>

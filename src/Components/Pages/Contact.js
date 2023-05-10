@@ -14,7 +14,7 @@ function Contact() {
             phone:phone.current.value
         }
 
-        const response=await fetch('https://react-http-310b4-default-rtdb.firebaseio.com/contact.json',{
+        const response=await fetch('https://react-sharpener-e-commerce-default-rtdb.firebaseio.com/contact.json',{
             method:"POST",
             body:JSON.stringify(newContact),
             headers:{
