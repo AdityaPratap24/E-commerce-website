@@ -30,10 +30,10 @@ const Login = () => {
                     let responce = res.json();
                     responce.then((data) => {
                         console.log(ctx);
+                        ctx.setIsLoggedIn(true);
                         console.log("idTOken:", data.idToken);
                         ctx.setToken(data.idToken);
                         localStorage.setItem("idToken", data.idToken);
-                        ctx.setIsLoggedIn(true);
                         history.push('/products')
                     })
                 } else {

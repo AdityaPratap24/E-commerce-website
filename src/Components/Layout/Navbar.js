@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { cartContext } from '../Store/CartProvider';
 
 const Navbar = (props) => {
-    let cartCtx=useContext(cartContext)
+    let cartCtx=useContext(cartContext);
     const handleOpenCart = () => {
         props.handleToggleCart();
     }
@@ -21,6 +21,9 @@ const Navbar = (props) => {
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" exact to="/store">Store</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page"  to="/products">Products</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" exact to="/about">About</NavLink>
