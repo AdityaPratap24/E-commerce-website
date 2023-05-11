@@ -26,6 +26,9 @@ const Navbar = (props) => {
                                 <NavLink className="nav-link active" aria-current="page" exact to="/about">About</NavLink>
                             </li>
                             <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page" exact to="/login">Login</NavLink>
+                            </li>
+                            <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" exact to="/contact">Contact Us</NavLink>
                             </li>
                         </ul>

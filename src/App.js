@@ -9,9 +9,10 @@ import About from './Components/Pages/About';
 import Home from './Components/Pages/Home';
 import HeaderContent from './Components/Layout/HeaderContent';
 import Contact from './Components/Pages/Contact';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Product from './Components/Pages/Product';
 import ProductDetail from './Components/Pages/ProductDetail';
+import Login from './Components/Pages/Login';
 
 
 function App() {
@@ -46,8 +47,11 @@ function App() {
       <Route exact path='/products'>
         <Product />
       </Route>
+      <Route exact path='/login'>
+        <Login />
+      </Route>
       <Route exact path='/products/:productId'>
-        <ProductDetail/>
+       <ProductDetail/>
       </Route>
       <Footer />
     </CartProvider>
