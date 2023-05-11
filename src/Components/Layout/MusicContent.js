@@ -33,7 +33,7 @@ const MusicContent = (props) => {
             <div className='container'>
             <div className='row my-2'>
                 {productsArr.map((item) => {
-                    return <div className='col-md-3 my-3'><MusicItem key={item.title} title={item.title} price={item.price} imageUrl={item.imageUrl} product={item}/></div>
+                    return <div key={item.title} className='col-md-3 my-3'><MusicItem title={item.title} price={item.price} imageUrl={item.imageUrl} product={item}/></div>
                 })}
             </div>
             </div>

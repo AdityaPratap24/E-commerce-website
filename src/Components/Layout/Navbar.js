@@ -4,8 +4,22 @@ import { cartContext } from '../Store/CartProvider';
 
 const Navbar = (props) => {
     let cartCtx=useContext(cartContext);
-    const handleOpenCart = () => {
+    const handleOpenCart = async () => {
         props.handleToggleCart();
+            try{
+                let usermailid=cartCtx.email.replace(/[^a-zA-Z0-9 ]/g, '');
+               let responce = await fetch(`https://crudcrud.com/api/fd0faf95b4a84615b69fa9aa9bd90a3d/cart${usermailid}`,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+              } );
+              let data=await responce.json();
+              console.log(data);
+              cartCtx.setCartItems({items:data,totalItems:0,totalAmount:0})
+            } catch (e) {
+              console.log("Something went wrong");
+            }
     }
     return (
         <div>
